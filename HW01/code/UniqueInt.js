@@ -1,10 +1,10 @@
 function UniqueInt(inputFile) {
-  const fs = require("fs").promises; // Using promises for async/await
+  const fs = require("fs").promises; 
 
   async function readFile() {
     try {
       const data = await fs.readFile(inputFile, "utf-8");
-      return data.trim().split(/\s+/); // Split on one or more whitespace characters
+      return data.trim().split(/\s+/); 
     } catch (err) {
       console.error(`Error reading file: ${err}`);
       return [];
@@ -12,16 +12,16 @@ function UniqueInt(inputFile) {
   }
 
   async function processData(data) {
-    const uniqueNumbers = {}; // Use an object to simulate uniqueness
+    const uniqueNumbers = {};
 
     for (const line of data) {
       const number = parseInt(line, 10);
-      // Check if line is empty, has multiple values, or contains non-integers
+      
       if (line.length === 0 || isNaN(number)) {
         continue;
       }
 
-      // Simulate "add" functionality using object property existence
+      
       if (!uniqueNumbers.hasOwnProperty(number)) {
         uniqueNumbers[number] = true;
       }
@@ -33,7 +33,7 @@ function UniqueInt(inputFile) {
     return sortedArray;
   }
 
-  // Helper function to extract numbers from the object used for uniqueness
+
   function extractNumbersFromArray(obj) {
     const result = [];
     for (const key in obj) {
